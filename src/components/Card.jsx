@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-export const Card = ({title, detail, rating, price, bestSeller}) => {
+export const Card = ({id, title, detail, rating, price, bestSeller}) => {
 
   // returns a list of stars and fills them accordingly
   const starsList =  useMemo(()=>{
@@ -15,9 +15,10 @@ export const Card = ({title, detail, rating, price, bestSeller}) => {
   // TODO: onClick to product page
 
   return (
-    <div className='w-[340px] h-[400px] shadow-md rounded-xl hover:shadow-zinc-500 hover:cursor-pointer'>
+    <div className='w-[340px] h-[400px] my-3 shadow-md rounded-xl hover:shadow-zinc-500 hover:cursor-pointer'>
         <div className='h-[45%] rounded-xl'>
             <img className='h-full w-full rounded-t-xl' src='/heroImage.png' alt='product' />
+            {bestSeller && <i className='relative -top-[95%] left-[12px] px-1 rounded-sm text-sm bg-amber-500 text-white'>Best Seller</i>}
         </div>
         <div className='px-4 text-left'>
             <h3 className='py-1.5 text-2xl font-semibold'>{title}</h3>
