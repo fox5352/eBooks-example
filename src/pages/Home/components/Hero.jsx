@@ -10,7 +10,7 @@ export const Hero = () => {
                 CodeBooks is the best place to get high quality, cheap coding eBooks.
                 Find ratings and access the newest books digitally
             </p>
-            <Link to='/productsList' className='w-24 px-3 py-1 mx-2 my-3.5 rounded-lg text-[1.2rem] text-center text-white bg-[crimson] dark:bg-cherry-600 hover:bg-cherry-500'>Explore</Link>
+            <Link to='/products' className='w-24 px-3 py-1 mx-2 my-3.5 rounded-lg text-[1.2rem] text-center text-white bg-[crimson] dark:bg-cherry-600 hover:bg-cherry-500'>Explore</Link>
         </div>
         <div className='p-3'>
             <img className='rounded-lg' draggable='false'  src='./heroImage.png' />
