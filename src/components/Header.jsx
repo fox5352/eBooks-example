@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <header className='flex flex-row justify-between px-[120px] h-16 bg-[crimson] dark:bg-cherry-600 text-white'>
+    <header className='flex flex-row justify-between h-16 px-[120px] text-white bg-gradient-to-r from-rose-500 via-cherry-400 to-[#4B0F19]'>
         <div className='h-full'>
             {/* TODO: logo and Name */}
             <Link to='/' className='flex place-items-center h-full px-2 text-3xl font-semibold cursor-pointer'>CodeBooks</Link>
