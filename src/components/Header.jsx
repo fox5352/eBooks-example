@@ -10,10 +10,10 @@ export const Header = () => {
         </div>
         <div className='flex h-full'>
             {/* TODO: icons: settings, Search cart, user */}
-            <button className='place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500'>cart</button>
-            <button className='place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500'>cart</button>
-            <button className='place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500'>cart</button>
-            <button className='place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500'>cart</button>
+            <button className='place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500'><i className='bi bi-gear'></i></button>
+            <button className='place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500'><i className='bi bi-search'></i></button>
+            <button className='place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500'><i className='bi bi-cart'></i></button>
+            <button className='place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500'><i className='bi bi-octagon'></i></button>
         </div>
     </header>
   )

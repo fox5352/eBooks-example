@@ -29,7 +29,7 @@ export const FQA = () => {
     const response = [{question: "what is this site ?", answer: "A example E-Commerce React website"},{question: "2", answer: "w"},{question: "3", answer: "w"},{question: "4", answer: "w"}]
 
     const mapper = ({question, answer}) => {
-        return (<QuestionBlock question={question} answer={answer} />)
+        return (<QuestionBlock key={Math.floor(Math.random()*90)} question={question} answer={answer} />)
     }
 
   return (

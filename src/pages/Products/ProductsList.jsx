@@ -1,48 +1,17 @@
-import React, { useRef } from 'react'
+import React from 'react'
+
+import { useFetch } from "../../hooks";
 import { Footer,Card } from '../../components/'
 import { ProductsHeader } from './components/ProductsHeader'
 
 export const ProductsList = () => {
-  const  list = [
-    {
-      id: 145251,
-      title: 'Python for dummies',
-      detail: "this course takes you from zero to hero in python programming language learn the power off python and thinking programmatically",
-      rating: 4,
-      price: 220
-    },{
-      id: 14525,
-      title: 'Python for dummies',
-      detail: "this course takes you from zero to hero in python programming language learn the power off python and thinking programmatically",
-      rating: 4,
-      price: 220
-    },
-    {
-      id: 1452511,
-      title: 'Python for dummies',
-      detail: "this course takes you from zero to hero in python programming language learn the power off python and thinking programmatically",
-      rating: 4,
-      price: 220
-    },
-    {
-      id: 1452521,
-      title: 'Python for dummies',
-      detail: "this course takes you from zero to hero in python programming language learn the power off python and thinking programmatically",
-      rating: 4,
-      price: 220
-    },
-    {
-      id: 14525121,
-      title: 'Python for dummies',
-      detail: "this course takes you from zero to hero in python programming language learn the power off python and thinking programmatically",
-      rating: 4,
-      price: 220
-    },
-  ]
+  const { response } = useFetch('products')
+
+  console.log(response);
   
-  const mapper = ({id, title, detail, price}) => {
+  const mapper = ({id, title, detail, price, rating, best_seller}) => {
       return(
-        <Card key={id} id={id} title={title} detail={detail} price={price} bestSeller={true} />
+        <Card key={id} id={id} title={title} detail={detail} rating={rating} price={price} bestSeller={best_seller} />
       )
     }
 
@@ -51,7 +20,7 @@ export const ProductsList = () => {
         <main>
             <ProductsHeader />
             <div className='flex flex-wrap justify-evenly'>
-              {list.map(mapper)}
+              {response && response.map(mapper)}
             </div>
         </main>
         <Footer />

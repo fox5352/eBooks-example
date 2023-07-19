@@ -1,30 +1,27 @@
-import React, { useMemo } from 'react'
+import React, { } from 'react'
+import { Stars } from './Stars'
+import { useNavigate } from "react-router-dom";
 
 export const Card = ({id, title, detail, rating, price, bestSeller}) => {
-
-  // returns a list of stars and fills them accordingly
-  const starsList =  useMemo(()=>{
-    let newList = []
-    for (let i = 0; i < 5; i++) { 
-      newList.push(i < rating? <i class="bi bi-star-fill"></i>:<i class="bi bi-star"></i>)
-    }
-    return newList
-  },[rating])
-
+  const link = useNavigate()
   
   // TODO: onClick to product page
+  const redirect = () => {
+    link(`/product/${id}`)
+  }
 
   return (
-    <div className='w-[340px] h-[400px] my-3 shadow-md rounded-xl hover:shadow-zinc-500 hover:cursor-pointer'>
+    <div className='w-[340px] h-[400px] my-3 shadow-md rounded-xl hover:shadow-zinc-500 hover:cursor-pointer' onClick={redirect}>
         <div className='h-[45%] rounded-xl'>
             <img className='h-full w-full rounded-t-xl' src='/heroImage.png' alt='product' />
             {bestSeller && <i className='relative -top-[95%] left-[12px] px-1 rounded-sm text-sm bg-amber-500 text-white'>Best Seller</i>}
         </div>
-        <div className='px-4 text-left'>
+        {/* TODO:better scroll bar */}
+        <div className='flex flex-col h-[53%] px-4 text-left'>
             <h3 className='py-1.5 text-2xl font-semibold'>{title}</h3>
-            <p>{detail}</p>
+            <p className=' overflow-y-auto'>{detail}</p>
             <ul className='flex w-[25%] justify-between py-1.5 text-amber-600'>
-              {starsList && starsList.map(star=>star)}
+              <Stars rating={rating} />
             </ul>
             <div className='flex justify-between'>
               <p className='self-center first-letter:font-semibold first-letter:tracking-widest'>R{price}</p>
