@@ -1,6 +1,7 @@
-import React, { } from 'react'
+import React from 'react'
 import { Stars } from './Stars'
 import { useNavigate } from "react-router-dom";
+import { CartBtn } from './CartBtn';
 
 export const Card = ({id, title, detail, rating, price, bestSeller}) => {
   const link = useNavigate()
@@ -25,7 +26,7 @@ export const Card = ({id, title, detail, rating, price, bestSeller}) => {
             </ul>
             <div className='flex justify-between'>
               <p className='self-center first-letter:font-semibold first-letter:tracking-widest'>R{price}</p>
-              <button className='px-1.5 py-1.5 rounded-lg bg-sky-500 text-white hover:bg-sky-600'>Add to cart</button>
+              <CartBtn />
             </div>
         </div>
     </div>

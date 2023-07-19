@@ -6,8 +6,6 @@ import { ProductsHeader } from './components/ProductsHeader'
 
 export const ProductsList = () => {
   const { response } = useFetch('products')
-
-  console.log(response);
   
   const mapper = ({id, title, detail, price, rating, best_seller}) => {
       return(
