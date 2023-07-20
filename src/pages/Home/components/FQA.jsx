@@ -33,7 +33,7 @@ export const FQA = () => {
     }
 
   return (
-    <div className='space-y-4 p-2 text-center pb-6 mb-10 rounded-xl shadow-xl'>
+    <div className='space-y-4 p-2 text-center pb-6 mb-10 rounded-xl shadow-xl dark:shadow-slate-500'>
         <h2 className='text-xl underline underline-offset-4 py-2'>F Q A</h2>
         {response && response.map(mapper)}
     </div>
