@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 
 const CheckListItem  = ({type, name, label, ...props}) => {
 
-    const handleInput = () => {
+    // const handleInput = () => {
 
-    }
+    // }
 
     return(
-        <li className='class="flex px-2 w-full mr-2 text-base font-normal text-gray-900 rounded-lg'>
+        <li className='class="flex px-2 w-full mr-2 text-base font-normal text-gray-900 rounded-lg dark:text-white'>
             <input className='p-0 mr-1' type={type} name={name} value={name} />
             <label className='p-0 m-0'>{label}</label>
         </li>
@@ -19,13 +19,13 @@ const SortBy = () => {
 
 
     return(
-        <>
+        <div className='dark:text-white'>
             <h2>Sort - By</h2>
             <ul class="mb-2">
                 <CheckListItem label='Low - High' type='radio' name='sort' value="low" />
                 <CheckListItem label='High - Low' type='radio' name='sort' value="high" />
             </ul>
-        </>
+        </div>
     )
 }
 
@@ -56,12 +56,22 @@ const Others = () => {
     )
 }
 
-export const SideBar = ({setBtnState}) => {
+export const SideBar = ({setBtnState, state}) => {
+    state &&  console.log(document.querySelector('#sideBar').classList);
+
+    if (state) {
+        document.getElementById('sideBar').classList.remove('scale-0','-translate-x-[200px]')
+        document.getElementById('sideBar').classList.add('scale-100','-translate-x-[0px]')
+    }else{
+        document.getElementById('sideBar').classList.remove('scale-100','-translate-x-[0px]')
+        document.getElementById('sideBar').classList.add('scale-0','-translate-x-[200px]')
+    }
+
 
     return (
-        <aside id="default-sidebar" class="fixed top-16 left-0 z-40 w-64 rounded-r-lg border-l-0 border-2 border-rose-500 bg-white text-inherit dark:text-inherit dark:bg-inherit" aria-label="Sidenav">
-            <div class="overflow-y-auto py-5 px-3 mb-6 h-full">
-                <div className='flex justify-between mb-4 text-lg font-semibold'>
+        <aside id='sideBar'  class="fixed top-16 left-0 scale-0 z-40 w-64 rounded-r-lg border-l-0 border-2 bg-white border-rose-500 dark:bg-zinc-700 dark:text-white transition-all duration-500" >
+            <div class="overflow-y-auto py-5 px-3 h-full rounded-r-lg dark:bg-zinc-700 dark:text-white">
+                <div className='flex justify-between mb-4 text-lg font-semibold dark:text-white'>
                     <h2 className=''>FILTERS </h2>
                     <i className='cursor-pointer bi bi-x' onClick={()=>setBtnState(false)}></i>
                 </div>

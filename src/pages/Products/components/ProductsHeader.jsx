@@ -3,7 +3,7 @@ import { SideBar } from './SideBar'
 
 export const ProductsHeader = () => {
     const [btnState, setBtnState] = useState(false)
-    const [products, setProducts] = useState([])
+    const [products] = useState([])
 
     const toggleSideBar = () => {
       setBtnState(!btnState)
@@ -17,8 +17,7 @@ export const ProductsHeader = () => {
                 <i className='bi bi-arrow-down-circle'></i>
             </button>
             
-            {btnState && <SideBar setBtnState={setBtnState} />}
-
+            <SideBar setBtnState={setBtnState} state={btnState} />
         </div>
     </>
   )

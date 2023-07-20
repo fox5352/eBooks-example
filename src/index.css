@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+body {
+    height: 100vh;
+}
+
 main {
     width: 75%;
 

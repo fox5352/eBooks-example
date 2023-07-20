@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const CartHook = () => {
 
     const add_to_cart = () => {}

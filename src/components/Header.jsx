@@ -22,7 +22,7 @@ export const Header = () => {
                 <button className='header-btn' onClick={toggleTheme}>
                   <i className={`bi bi-${!isDark? "moon-fill": "sun-fill"}`}></i>
                 </button>
-                <a>
+                <a href='/'>
                   <button className='header-btn' >
                     <i className={`bi bi-github`}></i>
                   </button>

@@ -13,7 +13,7 @@ export const Hero = () => {
             <Link to='/products' className='w-24 px-3 py-1 mx-2 my-3.5 rounded-lg text-[1.2rem] text-center text-white bg-[crimson] dark:bg-cherry-600 hover:bg-cherry-500'>Explore</Link>
         </div>
         <div className='p-3'>
-            <img className='rounded-lg' draggable='false'  src='./heroImage.png' />
+            <img className='rounded-lg' draggable='false'  src='./heroImage.png' alt='the hero graphic' />
         </div>
     </div>
   )

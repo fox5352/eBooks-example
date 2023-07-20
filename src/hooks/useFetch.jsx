@@ -9,9 +9,12 @@ export const useFetch = (url) => {
         setResponse(await data.json()) 
     }
 
+    /* eslint-disable */
     useEffect(()=>{
         getData()
     }, [])
+    /* eslint-enable */
+
 
     return { response }
 }
