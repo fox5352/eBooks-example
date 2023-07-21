@@ -4,27 +4,33 @@ const filterReducer = (state, action) => {
     switch (type) {
         case "PRODUCT_LIST":{
             return{
-                ...state
+                ...state,
+                list: payload.list
             }
         }case "SORT_BY":{
             return{
-                ...state
+                ...state,
+                sortBy: payload
             }
         }case "RATING":{
             return{
-                ...state
+                ...state,
+                rating: payload
             }
         }case "BEST_SELLER":{
             return{
-                ...state
+                ...state,
+                onlyBestSeller: payload
             }
         }case "IN_STOCK":{
             return{
-                ...state
+                ...state,
+                onlyInStock: payload
             }
         }case "CLEAR":{
             return{
-                ...state
+                ...state,
+                ...payload
             }
         }default:
             throw new Error("this method is not in filterReducer")

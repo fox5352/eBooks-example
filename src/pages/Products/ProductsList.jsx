@@ -1,13 +1,21 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { useLocation } from "react-router-dom";
 
 import { useFetch } from "../../hooks";
-import { Footer,Card } from '../../components/'  
+import { Footer,Card } from '../../components/'
+import { useFilter } from "../../stateManagement";  
 import { ProductsHeader } from './components/ProductsHeader'
 
 export const ProductsList = () => {
   const query = useLocation().search
   const response = useFetch(`products${query}`)
+  const { list, initialProducts } = useFilter()
+  
+  /* eslint-disable */
+  useEffect(()=>{
+    initialProducts(response)
+  },[response])
+  /* eslint-enable */
 
   
   const mapper = ({id, title, detail, price, rating, best_seller}) => {
@@ -18,10 +26,10 @@ export const ProductsList = () => {
 
   return (
     <>
-        <main>
-            <ProductsHeader listLen={0} />
+        <main>  
+            <ProductsHeader listLen={list.length} />
             <div className='flex flex-wrap justify-evenly'>
-              {response &&response.map(mapper)}
+              {list && list.map(mapper)}
             </div>
         </main>
         <Footer />
