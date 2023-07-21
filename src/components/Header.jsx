@@ -40,7 +40,7 @@ export const Header = () => {
               </button>
 
               {/* search btn */}
-              <button className='header-btn' onClick={toggleBar}>
+              <button className='header-btn hover:animate-spin' onClick={toggleBar}>
                 <i className='bi bi-search'></i>
               </button>
 
@@ -57,7 +57,7 @@ export const Header = () => {
               </Link>
           </div>
       </header>
-      <SearchBar state={searchBar} />
+      <SearchBar state={searchBar} toggleBar={toggleBar} />
     </>
   )
 }

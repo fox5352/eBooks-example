@@ -1,25 +1,16 @@
 import { useEffect, useState } from 'react'
 
 export const useFetch = (url) => {
-    const [response, setResponse] = useState()
     const fullURL = `http://localhost:8000/${url}`
-
-    const getData = async () => {
-        try {
-            const data = await fetch(fullURL)
-            setResponse(await data.json()) 
-        } catch (error) {
-            new Error(`failed: ${error}`)
-            setResponse(null)
-        }
-    }
+    const [response, setResponse] = useState([])
 
     /* eslint-disable */
     useEffect(()=>{
-        getData()
-    }, [])
+        fetch(fullURL)
+            .then(data=> data.json())
+            .then(data=> setResponse([...data]))
+    },[url,fullURL])
     /* eslint-enable */
 
-
-    return { response }
+    return response
 }

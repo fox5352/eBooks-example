@@ -3,7 +3,7 @@ import { useFetch } from '../../../hooks'
 import { Card } from '../../../components/Card' 
 
 export const FeaturedProducts = () => {
-  const { response } = useFetch('featuredProducts')
+  const response = useFetch('featuredProducts')
 
   console.log();
   

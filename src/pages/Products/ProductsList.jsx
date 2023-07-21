@@ -1,12 +1,13 @@
 import React from 'react'
+import { useLocation } from "react-router-dom";
 
 import { useFetch } from "../../hooks";
-import { Footer,Card } from '../../components/'
+import { Footer,Card } from '../../components/'  
 import { ProductsHeader } from './components/ProductsHeader'
 
 export const ProductsList = () => {
-  const { response } = useFetch('products')
-
+  const query = useLocation().search
+  const response = useFetch(`products${query}`)
 
   
   const mapper = ({id, title, detail, price, rating, best_seller}) => {
@@ -18,9 +19,9 @@ export const ProductsList = () => {
   return (
     <>
         <main>
-            <ProductsHeader listLen={response? response.length: 0} />
+            <ProductsHeader listLen={0} />
             <div className='flex flex-wrap justify-evenly'>
-              {response && response.map(mapper)}
+              {response &&response.map(mapper)}
             </div>
         </main>
         <Footer />
