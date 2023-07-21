@@ -6,6 +6,8 @@ import { ProductsHeader } from './components/ProductsHeader'
 
 export const ProductsList = () => {
   const { response } = useFetch('products')
+
+
   
   const mapper = ({id, title, detail, price, rating, best_seller}) => {
       return(
@@ -16,7 +18,7 @@ export const ProductsList = () => {
   return (
     <>
         <main>
-            <ProductsHeader />
+            <ProductsHeader listLen={response? response.length: 0} />
             <div className='flex flex-wrap justify-evenly'>
               {response && response.map(mapper)}
             </div>

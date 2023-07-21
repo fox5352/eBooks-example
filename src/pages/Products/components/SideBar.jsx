@@ -57,19 +57,22 @@ const Others = () => {
 }
 
 export const SideBar = ({setBtnState, state}) => {
-    state &&  console.log(document.querySelector('#sideBar').classList);
+    const sideBar = document.getElementById('sideBar')
 
-    if (state) {
-        document.getElementById('sideBar').classList.remove('scale-0','-translate-x-[200px]')
-        document.getElementById('sideBar').classList.add('scale-100','-translate-x-[0px]')
-    }else{
-        document.getElementById('sideBar').classList.remove('scale-100','-translate-x-[0px]')
-        document.getElementById('sideBar').classList.add('scale-0','-translate-x-[200px]')
+    if (sideBar) {
+        if (state && sideBar) {
+            sideBar.classList.remove('scale-0','-translate-x-[200px]')
+            sideBar.classList.add('scale-100','-translate-x-[0px]')
+        }else{
+            sideBar.classList.remove('scale-100','-translate-x-[0px]')
+            sideBar.classList.add('scale-0','-translate-x-[200px]')
+        }
     }
 
 
+
     return (
-        <aside id='sideBar'  class="fixed top-16 left-0 scale-0 z-40 w-64 rounded-r-lg border-l-0 border-2 bg-white border-rose-500 dark:bg-zinc-700 dark:text-white transition-all duration-500" >
+        <aside id='sideBar'  class="fixed top-16 left-0 scale-0 -translate-x-[200px] z-40 w-64 rounded-r-lg border-l-0 border-2 bg-white border-rose-500 dark:bg-zinc-700 dark:text-white transition-all duration-500" >
             <div class="overflow-y-auto py-5 px-3 h-full rounded-r-lg dark:bg-zinc-700 dark:text-white">
                 <div className='flex justify-between mb-4 text-lg font-semibold dark:text-white'>
                     <h2 className=''>FILTERS </h2>

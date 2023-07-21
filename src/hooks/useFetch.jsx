@@ -5,8 +5,13 @@ export const useFetch = (url) => {
     const fullURL = `http://localhost:8000/${url}`
 
     const getData = async () => {
-        const data = await fetch(fullURL)
-        setResponse(await data.json()) 
+        try {
+            const data = await fetch(fullURL)
+            setResponse(await data.json()) 
+        } catch (error) {
+            new Error(`failed: ${error}`)
+            setResponse(null)
+        }
     }
 
     /* eslint-disable */
