@@ -4,12 +4,12 @@ import { Card } from '../../../components/Card'
 
 export const FeaturedProducts = () => {
   const response = useFetch('featuredProducts')
-
-  console.log();
   
-  const mapper = ({id, title, detail, rating, price, best_seller, ...arg}) => {
-    return(<Card key={id} id={id} title={title} detail={detail} rating={rating} price={price} bestSeller={best_seller} />)
-  }
+  const mapper = (props) => {
+    return(
+      <Card key={props.id} id={props.id} title={props.title} detail={props.detail} rating={props.rating} price={props.price} best_seller={props.best_seller} in_stock={props.in_stock} />
+    )
+}
 
   return (
     <div className='space-y-4 text-center pb-6 mb-10 rounded-xl shadow-xl dark:shadow-slate-500'>

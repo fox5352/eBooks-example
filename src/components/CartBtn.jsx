@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCart } from "../stateManagement";
 
 export const CartBtn = ({props, disabled}) => {
@@ -11,7 +11,7 @@ export const CartBtn = ({props, disabled}) => {
     }else{
       setInCart(false)
     }
-  },[list])
+  },[list, props.id])
 
   const clickHandler = (e) => {
     e.stopPropagation()

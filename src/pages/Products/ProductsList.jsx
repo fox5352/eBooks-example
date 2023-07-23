@@ -22,7 +22,7 @@ export const ProductsList = () => {
       return(
         <Card key={props.id} id={props.id} title={props.title} detail={props.detail} rating={props.rating} price={props.price} best_seller={props.best_seller} in_stock={props.in_stock} />
       )
-    }
+  }
 
   return (
     <>
