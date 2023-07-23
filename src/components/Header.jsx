@@ -1,16 +1,24 @@
 "use client";
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from "react-router-dom";
 
 import { useTheme } from "../hooks";
 import { SearchBar } from './SearchBar';
+import { LoginMenu } from "./LoginMenu";
+import { LogoutMenu } from "./LogoutMenu";
 
 export const Header = () => {
   const { toggleTheme, isDark } = useTheme()
   const [searchBar, setSearchBar] = useState(false)
+  const [ displayMenu, setDisplayMenu ] = useState(false)
+  const token = JSON.parse(sessionStorage.getItem('token'))
 
   const toggleBar = () => {
     setSearchBar(!searchBar)
+  }
+
+  const toggleMenu = () => {
+    setDisplayMenu(!displayMenu)
   }
 
   return (
@@ -45,16 +53,19 @@ export const Header = () => {
               </button>
 
               {/* Cart btn */}
-              <button className='header-btn'>
-                <i className='bi bi-cart'></i>
-              </button>
-
-              <Link to='/login'>
+              <Link to='/cart'>
                 <button className='header-btn'>
-                  {/* if users authenticated change icon to bi-person-check and nav link */}
-                  <i className='bi bi-person'></i>
+                  <i className='bi bi-cart'></i>
                 </button>
               </Link>
+
+              <div>
+                <button className='header-btn' onClick={toggleMenu}>
+                  {/* if users authenticated change icon to bi-person-check and nav link */}
+                  <i className={`bi bi-person${token? '-check text-2xl': ' text-xl'}`}></i>
+                </button>
+                {token ? <LogoutMenu displayMenu={displayMenu} func={toggleMenu} /> :<LoginMenu displayMenu={displayMenu} func={toggleMenu} />}
+              </div>
           </div>
       </header>
       <SearchBar state={searchBar} toggleBar={toggleBar} />

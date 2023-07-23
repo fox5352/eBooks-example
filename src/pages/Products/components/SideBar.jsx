@@ -2,15 +2,6 @@ import React from 'react'
 
 import { useFilter } from "../../../stateManagement";
 
-const CheckListItem  = ({type, name, label, value, func, state}) => {
-
-    return(
-        <li className='class="flex px-2 w-full mr-2 text-base font-normal text-gray-900 rounded-lg dark:text-white'>
-            <input className='p-0 mr-1' type={type} name={name} value={value} checked={String(value) === String(state)} onChange={()=>func(value)}/>
-            <label className='p-0 m-0'>{label}</label>
-        </li>
-    )
-}
 
 export const SideBar = ({setBtnState, state}) => {
     const { setRating,  toggleSort, toggleInStock, toggleBestSeller, clearFilter,
@@ -70,5 +61,16 @@ export const SideBar = ({setBtnState, state}) => {
                 </div>
             </div>
         </aside>
+    )
+}
+
+
+const CheckListItem  = ({type, name, label, value, func, state}) => {
+
+    return(
+        <li className='class="flex px-2 w-full mr-2 text-base font-normal text-gray-900 rounded-lg dark:text-white'>
+            <input className='p-0 mr-1' type={type} name={name} value={value} checked={String(value) === String(state)} onChange={()=>func(value)}/>
+            <label className='p-0 m-0'>{label}</label>
+        </li>
     )
 }

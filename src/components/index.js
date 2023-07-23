@@ -1,6 +1,7 @@
 export { Card } from "./Card";
+export { Stars } from "./Stars";
 export { Footer } from "./Footer";
 export { Header } from "./Header";
-export { Stars } from './Stars';
 export { CartBtn } from "./CartBtn";
+export { LoginMenu } from "./LoginMenu";
 export { SearchBar } from "./SearchBar";
