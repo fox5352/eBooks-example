@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
 
 
-import { InputBlock } from "./components/InputBlock";
+import { InputBlock } from "../../components/InputBlock";
 
 export const SignPage = () => {
     const { pathname } = useLocation()

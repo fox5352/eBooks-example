@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 
 import { useTheme } from "../hooks";
@@ -33,13 +33,13 @@ export const Header = () => {
               <button className='header-btn group'>
                 <i className='bi bi-gear'></i>
 
-              <div id='menu'  className='absolute scale-0 -translate-y-1/3  group-hover:scale-100 group-hover:translate-y-0 transition-all duration-300 ease-in'>
-                <div className='relative top-1 -left-1.5 z-10text-lg bg-cherry-600'>
-                  <button className='header-btn' onClick={toggleTheme}>
+              <div id='menu'  className='absolute scale-0 -translate-y-1/3 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-300 ease-in'>
+                <div className='relative top-1 -left-1.5 z-10 rounded-lg text-lg bg-cherry-600'>
+                  <button className='header-btn hover:scale-90' onClick={toggleTheme}>
                     <i className={`bi bi-${!isDark? "moon-fill": "sun-fill"}`}></i>
                   </button>
                   <a href='/'>
-                    <button className='header-btn' >
+                    <button className='header-btn hover:scale-90' >
                       <i className={`bi bi-github`}></i>
                     </button>
                   </a>

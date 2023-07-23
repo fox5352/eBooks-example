@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { CartItem } from "./CartItem";
+import { CheckOut } from "./CheckOut";
 
-export const CartList = ({cartData}) => {
+export const CartList = ({cartData, total}) => {
+  const [showCheckout, setShowCheckout] = useState(false)
 
     const mapper = ({id, title, price, url, ...props}) => {
       return <CartItem key={id} id={id} title={title} price={price} url={''} />
+    }
+
+    const toggleCheckout = () => {
+      setShowCheckout(!showCheckout)
     }
   
     return(
@@ -20,8 +27,9 @@ export const CartList = ({cartData}) => {
             <p className='text-xl'>{0}</p>
         </div>
         <div className='flex justify-end px-6'>
-          <button className='px-4 py-2 my-6 rounded-lg text-white bg-green-400 hover:scale-110 hover:bg-green-600'>PLACE Order <i className='bi bi-arrow-right'></i></button>
+          <button className='px-4 py-2 my-6 rounded-lg text-white bg-green-400 hover:scale-110 active:bg-green-600' onClick={toggleCheckout}>PLACE Order <i className='bi bi-arrow-right'></i></button>
         </div>
+        {<CheckOut state={showCheckout} func={toggleCheckout} total={total}/>}
       </>
     )
   }
