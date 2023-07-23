@@ -4,12 +4,12 @@ import { CartList } from "./components/CartList";
 import { EmptyList } from "./components/EmptyList";
 
 export const CartPage = () => {
-  const { list, total } = useCart()
+  const { list, cartLen, total } = useCart()
 
   return (
     <>
         <main>
-          {list.length > 0 ? <CartList cartData={list} total={total} />: <EmptyList/>}
+          {list.length > 0 ? <CartList cartData={list} cartLen={cartLen} total={total} />: <EmptyList/>}
         </main>
     </>
   )

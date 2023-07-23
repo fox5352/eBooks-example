@@ -12,6 +12,12 @@ const cartReducer = (state, action) => {
                 ...state,
                 list: payload.list
             }
+        }case 'CLEAR_LIST':{
+            return{
+                ...state,
+                list: []
+            }
+
         }case 'SET_TOTAL':{
             return{
                 ...state,

@@ -18,9 +18,9 @@ export const ProductsList = () => {
   /* eslint-enable */
 
   
-  const mapper = ({id, title, detail, price, rating, best_seller}) => {
+  const mapper = (props) => {
       return(
-        <Card key={id} id={id} title={title} detail={detail} rating={rating} price={price} bestSeller={best_seller} />
+        <Card key={props.id} id={props.id} title={props.title} detail={props.detail} rating={props.rating} price={props.price} best_seller={props.best_seller} in_stock={props.in_stock} />
       )
     }
 

@@ -31,7 +31,7 @@ export const Header = () => {
           <div className='flex h-full'>
               {/* setting btn/menu */}
               <button className='header-btn group'>
-                <i className='bi bi-gear'></i>
+                <div className=' group-hover:animate-spin ease-in-out'><i className='bi bi-gear'></i></div>
 
               <div id='menu'  className='absolute scale-0 -translate-y-1/3 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-300 ease-in'>
                 <div className='relative top-1 -left-1.5 z-10 rounded-lg text-lg bg-cherry-600'>
@@ -48,7 +48,7 @@ export const Header = () => {
               </button>
 
               {/* search btn */}
-              <button className='header-btn hover:animate-spin' onClick={toggleBar}>
+              <button className='header-btn' onClick={toggleBar}>
                 <i className='bi bi-search'></i>
               </button>
 

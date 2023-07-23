@@ -12,7 +12,7 @@ const CartContext = createContext(InitialCartState)
 export const CartProvider = ({children}) => {
     const [state, dispatch] = useReducer(cartReducer, InitialCartState)
 
-    const add = (data) => {
+    const add_to_cart = (data) => {
         const newData = state.list.concat(data)
         dispatch({
             type: "ADD",
@@ -21,8 +21,8 @@ export const CartProvider = ({children}) => {
             }
         })
     }
-    const remove = (data) => {
-        const newData = state.filter(item => item.id !== data.id)
+    const remove_from_cart = (data) => {
+        const newData = state.list.filter(item => item.id !== data.id)
         dispatch({
             type: "REMOVE",
             payload: {
@@ -30,13 +30,27 @@ export const CartProvider = ({children}) => {
             }
         })
     }
+    const clear_cart = (data) => {
+        dispatch({
+            type: 'CLEAR_LIST',
+            payload: ''
+        })
+    } 
     
+    const getTotal = (list) => {
+        let num = 0
+        list.forEach(item => {
+            num += Number(item.price)
+        });
+        return num
+    }
     const value = {
         list: state.list,
         cartLen: state.list.length,
-        total: state.total,
-        add,
-        remove,
+        total: getTotal(state.list),
+        add_to_cart,
+        remove_from_cart,
+        clear_cart
     }
 
     return(

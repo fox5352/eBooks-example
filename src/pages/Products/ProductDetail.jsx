@@ -5,11 +5,11 @@ import { useParams } from "react-router-dom";
 
 export const ProductDetail = () => {
   const params = useParams()
-  const response = useFetch(`products?id=${params.id}`)
-  const [list, setList ] = useState(response[0] || null)
+  const response = (useFetch(`products?id=${params.id}`))[0]
+  const [list, setList ] = useState(response || null)
   
   useEffect(()=>{
-    setList(response[0])
+    setList(response)
   },[response])
 
 
@@ -38,7 +38,7 @@ export const ProductDetail = () => {
                 <li className={`px-1.5 rounded-md border-[1px] ${response.in_stock? "border-amber-300 bg-amber-300": "border-bg-rose-600 bg-rose-600"} text-white`}>{list.in_stock? "In Stock": "Out of Stock"}</li>
               </ul>
               {/* controls */}
-                <div className='my-4'><CartBtn/></div>
+                <div className='my-4'><CartBtn props={list}  disabled={!list.in_stock} /></div>
               {/* Product detail */}
               <p>{list.detail}</p>
             </div>
