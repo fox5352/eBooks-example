@@ -6,14 +6,14 @@ import { useNavigate } from 'react-router-dom';
 export const CheckOut = ({state, func, ...props}) => {
   const menuRef = useRef()
   const redirect = useNavigate()
-  const { clear_cart, total, list } = useCart()
+  const { total, list } = useCart()
   // FormData
   const [formData, setFormData] = useState({
-      name: null,
-      email: null,
-      cardNumber: null,
-      expiryDate: null,
-      code: null
+      name: '',
+      email: '',
+      cardNumber: '',
+      expiryDate: '',
+      code: ''
   })
   // gets user Data
   const token = JSON.parse(sessionStorage.getItem('token'))
@@ -54,6 +54,7 @@ export const CheckOut = ({state, func, ...props}) => {
 
   // onSubmit  then clears form/cart data and redirects to 
   const submit = async (e) => {
+    e.preventDefault()
     const order = JSON.stringify({
       user: {
         id: userID,
@@ -68,21 +69,22 @@ export const CheckOut = ({state, func, ...props}) => {
       method: 'POST',
       body: order
     }
-    e.preventDefault()
 
-    const response = await (await fetch('http://localhost:8000/660/orders', fetchOps)).json()
-    console.log(response);
-    // clears form
-    setFormData({
-      name: null,
-      email: null,
-      cardNumber: null,
-      expiryDate: null,
-      code: null
-    })
-    //clears cart list
-    clear_cart()
-    redirect('/order-list')
+    try {
+      const response = await (await fetch('http://localhost:8000/660/orders', fetchOps)).json()
+      // clears form
+      setFormData({
+        name: '',
+        email: '',
+        cardNumber: '',
+        expiryDate: '',
+        code: ''
+      })
+      // redirects and sends order data with it
+      redirect('/order-summary', {state: { status: true, orderData: response }})
+    } catch (error) {
+      redirect('/order-summary', {state: { status: false}})
+    }
   } 
 
   return (

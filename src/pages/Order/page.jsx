@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { OrderSuccess } from "./components/OrderSuccess";
+import { OrderFailed } from "./components/OrderFailed";
+import { useLocation } from 'react-router-dom';
+
 
 export const OrderPage = () => {
-  const [orderList, setOrderList] = useState()
-  const token = JSON.parse(sessionStorage.getItem('token'))
-  const userID = JSON.parse(sessionStorage.getItem('cbid'))
-
-  useEffect(()=>{
-
-  },[])
+  const { state } = useLocation()
 
   return (
-    <div>OrderPage</div>
+    <main>
+      {state.status? <OrderSuccess order={state.orderData}/>: <OrderFailed />}
+    </main>
   )
 }

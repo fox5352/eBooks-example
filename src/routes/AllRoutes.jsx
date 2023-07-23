@@ -15,7 +15,7 @@ const AllRoutes = () => {
 
         <Route path='/cart' element={<ProtectedRoute> <CartPage /> </ProtectedRoute>} end/>
         <Route path='/dashboard' element={<ProtectedRoute> <Dashboard />  </ProtectedRoute>} end/>
-        <Route path='/order-list' element={<ProtectedRoute> <OrderPage />  </ProtectedRoute>} end/>
+        <Route path='/order-summary' element={<ProtectedRoute> <OrderPage />  </ProtectedRoute>} end/>
 
         <Route path='/*' element={<NotFound />} end />
     </Routes>
