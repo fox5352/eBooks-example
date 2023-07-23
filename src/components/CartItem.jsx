@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../../stateManagement";
+import { useCart } from "../stateManagement";
 
 export const CartItem = ({ id, title, detail, rating, price, best_seller, props, in_stock }) => {
     const { remove_from_cart } = useCart()

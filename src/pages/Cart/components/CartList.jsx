@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CartItem } from "./CartItem";
+import { CartItem } from "../../../components";
 import { CheckOut } from "./CheckOut";
 import { useCart } from "../../../stateManagement";
 
