@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTitle, signIn } from "../../hooks";
 
 
 import { InputBlock } from "../../components/InputBlock";
@@ -8,38 +9,30 @@ export const SignPage = () => {
     const { pathname } = useLocation()
     const redirect = useNavigate()
     const [formData, setFormData] = useState({
-        name: null,
-        email: null,
-        password: null
+        name: '',
+        email: '',
+        password: ''
     })
+    useTitle(pathname.replace('/', ''))
 
     const submit = async (e) => {
         e.preventDefault()
-
         // if login route then get data for login else add email to object
         let newData = pathname.replace('/','') === 'login'? {email: formData.email, password: formData.password}: {name:formData.name, email: formData.email, password: formData.password}
 
-        // POST json newData
-        const requestOpts = {
-            headers: {
-                "content-type": 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify(newData)
-        }
-
-        // post data on appropriate route then get response token else throw error for now
+        // post data on appropriate route then get response token else throw error for now TODO:later hook
         try {
-            const response = await (await fetch(`http://localhost:8000${pathname}`, requestOpts)).json()
+            const response = await signIn(formData, pathname)
 
             // if the login/register is valid stores userID and token in session storage
             if (response.accessToken) {
                 sessionStorage.setItem('token', JSON.stringify(response.accessToken))
                 sessionStorage.setItem('cbid', JSON.stringify(response.user.id))
+                redirect('/products',)
+            }else{
+                // TODO: create own toast popup
+                alert(response)
             }
-            
-            // TODO: create own toast popup
-            response.accessToken? redirect('/products'): alert(response)
         } catch (error) {
             throw new Error(error)
         }

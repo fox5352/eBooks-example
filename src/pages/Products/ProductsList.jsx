@@ -1,20 +1,27 @@
-import { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
+
 import { useLocation } from "react-router-dom";
 
-import { useFetch } from "../../hooks";
+import { getProducts, useTitle } from "../../hooks";
 import { Footer,Card } from '../../components/'
 import { useFilter } from "../../stateManagement";  
 import { ProductsHeader } from './components/ProductsHeader'
 
 export const ProductsList = () => {
-  const query = useLocation().search
-  const response = useFetch(`products${query}`)
   const { list, initialProducts } = useFilter()
+  useTitle("Products")
   
+  //gets search query and does a fetch request then adds the response to the global state
+  const query = useLocation().search
+  const getList = useCallback(()=>{
+    getProducts(`products${query}`)
+    .then(res=>initialProducts([].concat(res)))
+  },[initialProducts, query])
+
   /* eslint-disable */
   useEffect(()=>{
-    initialProducts(response)
-  },[response])
+    getList()
+  },[])
   /* eslint-enable */
 
   
@@ -29,7 +36,7 @@ export const ProductsList = () => {
         <main>  
             <ProductsHeader listLen={list.length} />
             <div className='flex flex-wrap justify-evenly'>
-              {list && list.map(mapper)}
+              {list.length > 0 && list.map(mapper)}
             </div>
         </main>
         <Footer />

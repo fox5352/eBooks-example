@@ -3,12 +3,15 @@ import React from 'react'
 export const Footer = () => {
   return (
     // make nicer
-    <footer className='flex justify-between w-3/4 mx-auto px-2 py-4 rounded-lg shadow-lg dark:shadow-slate-500'>
-      <p>{new Date().getFullYear() } CodeBooks. All Rights Reserved</p>
-      <div className='space-x-2'>
-        {/* TODO: add icons and links to github likedIn */}
-        <a href='/'>git</a>
-        <a href='/'>linkedIn</a>
+    <footer className='flex align-middle justify-between w-3/4 mx-auto px-2 py-4 border-[1px] border-neutral-300 rounded-lg shadow-lg dark:border-slate-400 dark:shadow-slate-500'>
+      <div className='flex'>
+        <p className='flex items-center'>{new Date().getFullYear() } CodeBooks example. All Rights Reserved</p>
+      </div>
+
+      <div className='flex space-x-2 pr-2'>
+        {/* TODO: add links to github likedIn */}
+        <a className='hover:text-rose-500 hover:dark:text-slate-400' href='/'>GitHub <i className='bi bi-github'></i></a>
+        <a className='hover:text-rose-500 hover:dark:text-slate-400' href='/'>linkedIn <i className='bi bi-linkedin'></i></a>
       </div>
     </footer>
   )

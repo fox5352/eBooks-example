@@ -4,10 +4,13 @@ import React, { useEffect, useState } from 'react'
 import { DashboardEmpty } from "./components/DashboardEmpty";
 import { DashboardCard } from './components/DashboardCard';
 import { getUserOrder } from "../../hooks";
+import { useTitle } from "../../hooks";
+
 
 
 export const Dashboard = () => {
   const [list, setList] = useState([])
+  useTitle("Dashboard")
 
   useEffect(() => {
     getUserOrder()

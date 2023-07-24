@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { CartBtn, Footer, Stars } from "../../components";
 import { useFetch } from "../../hooks";
 import { useParams } from "react-router-dom";
+import { useTitle } from "../../hooks";
 
 export const ProductDetail = () => {
   const params = useParams()
   const response = (useFetch(`products?id=${params.id}`))[0]
   const [list, setList ] = useState(response || null)
+  useTitle("Product")
   
   useEffect(()=>{
     setList(response)

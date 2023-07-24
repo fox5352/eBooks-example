@@ -1,21 +1,26 @@
+const URL = 'http://localhost:8000'
 
 export async function getUser() {
   const token = JSON.parse(sessionStorage.getItem('token'))
   const userID = JSON.parse(sessionStorage.getItem('cbid'))
-  
-  const response = await (await fetch(`http://localhost:8000/600/users/${userID}`, {
+
+  try {
+    const response = await (await fetch(`${URL}600/users/${userID}`, {
       headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
       method: 'GET', 
     })).json()
-
     return await response
+
+  } catch (error) {
+    return error
+  }
 }
 
 export async function getUserOrder() {
   const token = JSON.parse(sessionStorage.getItem('token'))
   const userID = JSON.parse(sessionStorage.getItem('cbid'))
 
-  const response = await(await fetch(`http://localhost:8000/660/orders?user.id=${userID}`, {
+  const response = await(await fetch(`${URL}660/orders?user.id=${userID}`, {
         headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
         method: 'GET', 
       })).json()
@@ -36,11 +41,34 @@ export async function createOrder(formData, list, total) {
     quantity: list.length
   })
 
-  const response = await (await fetch('http://localhost:8000/660/orders', {
+  const response = await (await fetch(`${URL}660/orders`, {
     headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
     method: 'POST',
     body: order
   })).json()  
   
   return await response
+}
+
+export async function signIn(formData, pathname) {
+  const response = await (await fetch(`${URL}${pathname}`, {
+    headers: {
+        "content-type": 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(formData)
+  })).json()
+
+  return await response
+  
+}
+
+export async function getProducts(path) {
+  try {
+    const response = await (await fetch(`${URL}/444/${path}`)).json()
+    return await response
+  } catch (error) {
+    console.log(error);
+    return []
+  }
 }
