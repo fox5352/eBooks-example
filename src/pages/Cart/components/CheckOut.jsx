@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { useCart } from "../../../stateManagement";
 import { InputBlock } from "../../../components";
 import { useNavigate } from 'react-router-dom';
+import { getUser, createOrder } from "../../../hooks";
 
 export const CheckOut = ({state, func, ...props}) => {
   const menuRef = useRef()
@@ -15,9 +16,6 @@ export const CheckOut = ({state, func, ...props}) => {
       expiryDate: '',
       code: ''
   })
-  // gets user Data
-  const token = JSON.parse(sessionStorage.getItem('token'))
-  const userID = JSON.parse(sessionStorage.getItem('cbid'))
 
   // animates the opening and closing of checkout menu
   useEffect(() => {
@@ -32,57 +30,28 @@ export const CheckOut = ({state, func, ...props}) => {
   }, [menuRef, state])
 
   // used to get user Data to fill in the form
-  useEffect(()=>{    
-    fetch(`http://localhost:8000/600/users/${userID}`, {
-      headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
-      method: 'GET', 
-    })
-      .then(data=>data.json())
-      .then(data=>handleFetch(data))
+  useEffect(()=>{ 
+    getUser()
+      .then(data=>{ 
+        setFormData(prev=>{
+          return{
+            ...prev,
+            name: data.name || '',
+            email: data.email || ''
+          }
+        })
+      })
   },[])
-
-  // once users data is retrieved it fills the form
-  const handleFetch = (data) => {
-    setFormData(prev=>{
-      return{
-        ...prev,
-        name: data.name,
-        email: data.email
-      }
-    })
-  }
 
   // onSubmit  then clears form/cart data and redirects to 
   const submit = async (e) => {
     e.preventDefault()
-    const order = JSON.stringify({
-      user: {
-        id: userID,
-        ...formData
-      },
-      carList: list,
-      bill: total,
-      quaniaty: list.length
-    })
-    const fetchOps = {
-      headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
-      method: 'POST',
-      body: order
-    }
 
     try {
-      const response = await (await fetch('http://localhost:8000/660/orders', fetchOps)).json()
-      // clears form
-      setFormData({
-        name: '',
-        email: '',
-        cardNumber: '',
-        expiryDate: '',
-        code: ''
-      })
+      const response = await createOrder(formData, list, total) 
       // redirects and sends order data with it
       redirect('/order-summary', {state: { status: true, orderData: response }})
-    } catch (error) {
+    } catch (error) {   
       redirect('/order-summary', {state: { status: false}})
     }
   } 
@@ -106,7 +75,7 @@ export const CheckOut = ({state, func, ...props}) => {
                 </div>
             </fieldset>
             <div className='flex justify-center px-1'>
-                <button className='px-2 py-1 mt-2 rounded-md bg-green-400 hover:bg-[crimson]' type='submit'><i class='bi bi-lock'></i> Pay now</button>
+                <button className='px-2 py-1 mt-2 rounded-md bg-green-400 hover:bg-[crimson]' type='submit'><i className='bi bi-lock'></i> Pay now</button>
             </div>
         </form>
     </div>

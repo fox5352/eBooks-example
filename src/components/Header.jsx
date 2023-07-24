@@ -29,23 +29,31 @@ export const Header = () => {
               <Link to='/' className='flex place-items-center h-full px-2 text-3xl font-semibold cursor-pointer'>CodeBooks</Link>
           </div>
           <div className='flex h-full'>
-              {/* setting btn/menu */}
-              <button className='header-btn group'>
-                <div className=' group-hover:animate-spin ease-in-out'><i className='bi bi-gear'></i></div>
+              {/* settings menu */}
+              <div className='group'>
+              {/* setting btn */}
+                <button className='header-btn'>
+                  <div className='group-hover:animate-slow-spin'><i className='bi bi-gear'></i></div>
+                </button>
 
-              <div id='menu'  className='absolute scale-0 -translate-y-1/3 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-300 ease-in'>
-                <div className='relative top-1 -left-1.5 z-10 rounded-lg text-lg bg-cherry-600'>
-                  <button className='header-btn hover:scale-90' onClick={toggleTheme}>
-                    <i className={`bi bi-${!isDark? "moon-fill": "sun-fill"}`}></i>
-                  </button>
-                  <a href='/'>
-                    <button className='header-btn hover:scale-90' >
-                      <i className={`bi bi-github`}></i>
+                {/* menu */}
+                <div id='menu'  className='absolute'>
+                  <div className='relative -left-1 -top-0 z-10 scale-0 -translate-y-full group-hover:scale-100 group-hover:translate-y-0 flex flex-col px-1 py0.5 rounded-b-lg text-lg bg-cherry-600 transition-all duration-300 ease-in'>
+                  
+                    {/* Theme btn */}
+                    <button className='header-btn hover:scale-90' onClick={toggleTheme}>
+                      <i className={`bi bi-${!isDark? "moon-fill": "sun-fill"}`}></i>
                     </button>
-                  </a>
+                    {/* github btn TOGO: add link */}
+                    <a href='/'>
+                      <button className='header-btn hover:scale-90' >
+                        <i className={`bi bi-github`}></i>
+                      </button>
+                    </a>
+                    
+                  </div>
                 </div>
               </div>
-              </button>
 
               {/* search btn */}
               <button className='header-btn' onClick={toggleBar}>

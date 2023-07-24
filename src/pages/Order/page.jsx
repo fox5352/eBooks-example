@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { OrderSuccess } from "./components/OrderSuccess";
 import { OrderFailed } from "./components/OrderFailed";
 import { useLocation } from 'react-router-dom';

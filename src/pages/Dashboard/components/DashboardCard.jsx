@@ -1,11 +1,8 @@
 import React from "react";
-import { CartItem } from "../../../components";
 
 export const DashboardCard = ({order, list}) =>{
 
     const mapper = (props) => {
-      // return <CartItem key={props.id} id={props.id} title={props.title} detail={props.detail} rating={props.rating} price={props.price} best_seller={props.best_seller} in_stock={props.in_stock} />
-
       return (
         <li key={props.id} className="flex pr-1.5 my-1.5 h-24 rounded-lg shadow-lg dark:shadow-sm dark:shadow-slate-400 ">
           <img className="h-full pr-2 rounded-l-lg" src="/heroImage.png" alt="product" />

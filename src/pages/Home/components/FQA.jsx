@@ -8,7 +8,7 @@ const QuestionBlock = ({question, answer}) => {
     }
 
     return(
-        <div className='w-full px-4  rounded-md border-black border-l-2 border-r-2'>
+        <div key={Math.floor(Math.random()*99999)}  className='w-full px-4  rounded-md border-black border-l-2 border-r-2'>
             <div className='flex justify-between h-12 py-2'>
                 <h3 className='w-3/5 text-left text-lg font-semibold'>{question}</h3>
                 <button className='w-8 mr-1' onClick={toggleFocus}>

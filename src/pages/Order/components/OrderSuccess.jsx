@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 
 import { useCart } from "../../../stateManagement";
@@ -6,10 +6,8 @@ import { useCart } from "../../../stateManagement";
 export const OrderSuccess = ({order}) => {
     const { clear_cart } = useCart()
 
+    useMemo(() => clear_cart(), [clear_cart])
 
-    useEffect(()=>{
-      clear_cart()
-    },[])
 
     return(
       <>

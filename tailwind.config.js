@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation:{
+        'slow-spin': 'spin 2s linear infinite',
+        'wave' : 'wave 2s linear infinite'
+      },
+      keyframes: {
+        wave: {
+          '0%, 100%': { transform: 'rotate(-10deg)' },
+          '50%': { transform: 'rotate(10deg)' },
+        }
+      },
       colors: {
         cherry: {
           100: '#FFB8C1',

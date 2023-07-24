@@ -23,8 +23,8 @@ export const SideBar = ({setBtnState, state}) => {
     }
 
     return (
-        <aside id='sideBar'  class="fixed top-16 left-0 scale-0 -translate-x-[200px] z-40 w-64 rounded-r-lg border-l-0 border-2 bg-white border-rose-500 dark:bg-zinc-700 dark:text-white transition-all duration-500" >
-            <div class="overflow-y-auto py-5 px-3 h-full rounded-r-lg dark:bg-zinc-700 dark:text-white">
+        <aside id='sideBar'  className="fixed top-16 left-0 scale-0 -translate-x-[200px] z-40 w-64 rounded-r-lg border-l-0 border-2 bg-white border-rose-500 dark:bg-zinc-700 dark:text-white transition-all duration-500" >
+            <div className="overflow-y-auto py-5 px-3 h-full rounded-r-lg dark:bg-zinc-700 dark:text-white">
                 <div className='flex justify-between mb-4 text-lg font-semibold dark:text-white'>
                     <h2 className=''>FILTERS </h2>
                     <i className='cursor-pointer bi bi-x' onClick={()=>setBtnState(false)}></i>
@@ -32,7 +32,7 @@ export const SideBar = ({setBtnState, state}) => {
 
                 <div className='dark:text-white'>
                     <h2>Sort - By</h2>
-                    <ul class="mb-2">
+                    <ul className="mb-2">
                         <CheckListItem state={sortBy} func={toggleSort} label='Low - High' type='radio' name='sort' value="low" />
                         <CheckListItem state={sortBy} func={toggleSort} label='High - Low' type='radio' name='sort' value="high" />
                     </ul>
@@ -40,7 +40,7 @@ export const SideBar = ({setBtnState, state}) => {
 
                 {/*  */}
                 <h2>Rating</h2>
-                <ul class="mb-1">
+                <ul className="mb-1">
                     <CheckListItem state={rating} func={setRating} label='5 Stars & above' type='radio' name='rating' value='5' />
                     <CheckListItem state={rating} func={setRating} label='4 Stars & above' type='radio' name='rating' value='4' />
                     <CheckListItem state={rating} func={setRating} label='3 Stars & above' type='radio' name='rating' value='3' />
@@ -51,7 +51,7 @@ export const SideBar = ({setBtnState, state}) => {
 
                 {/*  */}
                 <h2>Other - filter</h2>
-                <ul class="mb-1">
+                <ul className="mb-1">
                     <CheckListItem state={onlyBestSeller} func={toggleBestSeller} label='Best Seller' type='checkbox' name='bestSeller' value='true' />
                     <CheckListItem state={onlyInStock} func={toggleInStock} label='In Stock' type='checkbox' name='inStock' value='true' />
                 </ul>

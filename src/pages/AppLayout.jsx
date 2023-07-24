@@ -7,7 +7,7 @@ const AppLayout = () => {
   return (
     <CartProvider>
         <FilterProvider>
-          <div class="text-black dark:text-white dark:bg-zinc-700">
+          <div className="text-black dark:text-white dark:bg-zinc-700">
             <Header />
             <AllRoutes />
           </div>

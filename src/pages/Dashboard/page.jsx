@@ -3,23 +3,15 @@ import React, { useEffect, useState } from 'react'
 
 import { DashboardEmpty } from "./components/DashboardEmpty";
 import { DashboardCard } from './components/DashboardCard';
+import { getUserOrder } from "../../hooks";
 
 
 export const Dashboard = () => {
   const [list, setList] = useState([])
-  const token = JSON.parse(sessionStorage.getItem('token'))
-  const userID = JSON.parse(sessionStorage.getItem('cbid'))
 
   useEffect(() => {
-    const getOrders = async () =>{
-      const res = await(await fetch(`http://localhost:8000/660/orders?user.id=${userID}`, {
-        headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
-        method: 'GET', 
-      })).json()
-      setList(res)
-    }
-
-    getOrders()
+    getUserOrder()
+      .then(res=>setList(res))
   }, [])
 
 
