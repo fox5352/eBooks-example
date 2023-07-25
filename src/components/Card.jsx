@@ -16,7 +16,9 @@ export const Card = ({ id, title, detail, rating, price, best_seller, props, in_
     <div className='w-[340px] h-[400px] my-3 shadow-md rounded-xl hover:shadow-zinc-400 hover:cursor-pointer dark:shadow-slate-500 dark:hover:shadow-slate-300' onClick={redirect}>
         <div className='h-[45%] rounded-xl'>
             <img className='h-full w-full rounded-t-xl' src='/heroImage.png' alt='product' />
-            {best_seller && <i className='relative -top-[95%] left-[12px] px-1 rounded-sm text-sm bg-amber-500 text-white'>Best Seller</i>}
+            {best_seller && <div className='absolute'>
+              <i className='relative -top-[160px] left-[12px] px-1 rounded-sm text-sm bg-amber-500 text-white'>Best Seller</i>
+            </div>}
         </div>
         {/* TODO:better scroll bar */}
         <div className='flex flex-col h-[53%] px-4 text-left'>
