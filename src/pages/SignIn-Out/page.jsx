@@ -46,6 +46,28 @@ export const SignPage = () => {
         })
     }
 
+    const loginAsGuest = async (e) => {
+        e.preventDefault()
+        const data = {email: process.env.REACT_APP_GUEST_EMAIL, password: process.env.REACT_APP_GUEST_PASSWORD}
+
+        // post data on appropriate route then get response token else throw error for now TODO:later hook
+        try {
+            const response = await signIn(data, pathname)
+
+            // if the login/register is valid stores userID and token in session storage
+            if (response.accessToken) {
+                login(response.user.id, response.accessToken)
+                redirect('/products')
+            }else{
+                // TODO: create own toast popup
+                alert(response)
+            }
+        } catch (error) {
+            throw new Error(error)
+        }
+
+    }
+
     return(
         <>
             <main> 
@@ -61,6 +83,9 @@ export const SignPage = () => {
                             <button className="px-3 py-1 mt-2 mb-1 shadow-md dark:shadow-slate-500 hover:shadow-lg rounded-md hover:bg-neutral-200 dark:bg-zinc-700 dark:hover:shadow-slate-500" type="submit">Enter</button>
                         </div>
                     </fieldset>
+                    {pathname.replace('/','') === 'login' && <div className="flex justify-center">
+                        <button className="px-3 py-1 mt-2 mb-1 shadow-md dark:shadow-slate-500 hover:shadow-lg rounded-md hover:bg-neutral-200 dark:bg-zinc-700 dark:hover:shadow-slate-500" onClick={loginAsGuest}>Login as Guest</button>
+                    </div>}
                 </form>
             </main>
         </>
