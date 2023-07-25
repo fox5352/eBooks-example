@@ -9,7 +9,6 @@ export const Footer = () => {
       </div>
 
       <div className='flex space-x-2 pr-2'>
-        {/* TODO: add links to github likedIn */}
         <a className='hover:text-rose-500 hover:dark:text-slate-400' href='/https://github.com/fox5352'>GitHub <i className='bi bi-github'></i></a>
         <a className='hover:text-rose-500 hover:dark:text-slate-400' href='/www.linkedin.com/in/christopher-vos-6469b7284'>linkedIn <i className='bi bi-linkedin'></i></a>
       </div>
