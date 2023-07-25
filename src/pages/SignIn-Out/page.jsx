@@ -24,7 +24,7 @@ export const SignPage = () => {
 
         // post data on appropriate route then get response token else throw error for now TODO:later hook
         try {
-            const response = await signIn(formData, pathname)
+            const response = await signIn(newData, pathname)
 
             // if the login/register is valid stores userID and token in session storage
             if (response.accessToken) {
