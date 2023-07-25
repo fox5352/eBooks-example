@@ -9,19 +9,24 @@ import { ProductsHeader } from './components/ProductsHeader'
 
 export const ProductsList = () => {
   const { list, initialProducts } = useFilter()
+  const query = useLocation().search
   useTitle("Products")
   
   //gets search query and does a fetch request then adds the response to the global state
-  const query = useLocation().search
-  const getList = useCallback(()=>{
-    getProducts(`products${query}`)
-    .then(res=>initialProducts([].concat(res)))
-  },[initialProducts, query])
+  const getList = async ()=>{
+    try {
+      const response = await getProducts(`products${query}`)
+      initialProducts([].concat(response))
+    } catch (error) {
+      // make error toast
+      console.log(error);
+    }
+  }
 
   /* eslint-disable */
   useEffect(()=>{
     getList()
-  },[])
+  },[query])
   /* eslint-enable */
 
   

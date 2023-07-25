@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
+import { useUser } from '../stateManagement/user/UserContext';
 
 
 export const LogoutMenu = ({displayMenu, func}) => {
+  const { logout } = useUser()
   const redirect = useNavigate()
   const menuRef = useRef(null)
 
@@ -18,8 +20,7 @@ export const LogoutMenu = ({displayMenu, func}) => {
   }, [menuRef, displayMenu])
   
   const logOut = () => {
-    sessionStorage.removeItem('token')
-    sessionStorage.removeItem('cbid')
+    logout()
     redirect('/')
     func()  
   }

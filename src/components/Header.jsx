@@ -6,12 +6,13 @@ import { useTheme } from "../hooks";
 import { SearchBar } from './SearchBar';
 import { LoginMenu } from "./LoginMenu";
 import { LogoutMenu } from "./LogoutMenu";
+import { useUser } from '../stateManagement/user/UserContext';
 
 export const Header = () => {
   const { toggleTheme, isDark } = useTheme()
   const [searchBar, setSearchBar] = useState(false)
   const [ displayMenu, setDisplayMenu ] = useState(false)
-  const token = JSON.parse(sessionStorage.getItem('token'))
+  const { loggedIn } = useUser()
 
   const toggleBar = () => {
     setSearchBar(!searchBar)
@@ -70,9 +71,9 @@ export const Header = () => {
               <div>
                 <button className='header-btn' onClick={toggleMenu}>
                   {/* if users authenticated change icon to bi-person-check and nav link */}
-                  <i className={`bi bi-person${token? '-check text-2xl': ' text-xl'}`}></i>
+                  <i className={`bi bi-person${loggedIn? '-check text-2xl': ' text-xl'}`}></i>
                 </button>
-                {token ? <LogoutMenu displayMenu={displayMenu} func={toggleMenu} /> :<LoginMenu displayMenu={displayMenu} func={toggleMenu} />}
+                {loggedIn ? <LogoutMenu displayMenu={displayMenu} func={toggleMenu} /> :<LoginMenu displayMenu={displayMenu} func={toggleMenu} />}
               </div>
           </div>
       </header>

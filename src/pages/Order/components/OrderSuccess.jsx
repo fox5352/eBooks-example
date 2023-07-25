@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 
 import { useCart } from "../../../stateManagement";
@@ -6,7 +6,8 @@ import { useCart } from "../../../stateManagement";
 export const OrderSuccess = ({order}) => {
     const { clear_cart } = useCart()
 
-    useMemo(() => clear_cart(), [clear_cart])
+
+    useEffect(() => clear_cart(), [])// eslint-disable-line
 
 
     return(

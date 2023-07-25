@@ -24,7 +24,7 @@ export const CartList = () => {
           {list.map(mapper)}
         </ul>
   
-        <div className='flex justify-between px-4 py-4 border-b-2 rounded-md border-neutral-400'>
+        <div className='flex justify-between px-4 py-4 border-b-2 rounded-md border-neutral-400 dark:border-slate-400'>
             <p className='text-xl'>Total Amount:</p>
             <p className='text-xl'>{total}</p>
         </div>

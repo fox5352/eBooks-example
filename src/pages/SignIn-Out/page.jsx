@@ -4,8 +4,10 @@ import { useTitle, signIn } from "../../hooks";
 
 
 import { InputBlock } from "../../components/InputBlock";
+import { useUser } from "../../stateManagement/user/UserContext";
 
 export const SignPage = () => {
+    const { login } = useUser()
     const { pathname } = useLocation()
     const redirect = useNavigate()
     const [formData, setFormData] = useState({
@@ -26,9 +28,8 @@ export const SignPage = () => {
 
             // if the login/register is valid stores userID and token in session storage
             if (response.accessToken) {
-                sessionStorage.setItem('token', JSON.stringify(response.accessToken))
-                sessionStorage.setItem('cbid', JSON.stringify(response.user.id))
-                redirect('/products',)
+                login(response.user.id, response.accessToken)
+                redirect('/products')
             }else{
                 // TODO: create own toast popup
                 alert(response)
@@ -51,7 +52,9 @@ export const SignPage = () => {
                 <form className="w-[500px] p-6 py-4 mx-auto rounded-lg shadow-lg dark:shadow-slate-500" onSubmit={submit}>
                     <fieldset className="px-4 py-1 pb-4 rounded-lg border-[3px] border-neutral-300 dark:border-slate-500">
                         <legend className="px-1.5 mx-auto text-lg tracking-[3px] first-letter:capitalize">{pathname.replace('/','')}</legend>
+                        {/* if register url path then render username field */}
                         {pathname.replace('/','') === 'register'&& <InputBlock type='text' label='Name' func={setFormData} name='name' state={formData.name} /> }
+
                         <InputBlock type='email' label='Email' func={setFormData} name='email' state={formData.email} />
                         <InputBlock type='password' label='Password' func={setFormData} name='password' state={formData.password} />
                         <div className="flex justify-center">

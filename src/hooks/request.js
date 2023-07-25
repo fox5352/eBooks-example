@@ -5,13 +5,14 @@ export async function getUser() {
   const userID = JSON.parse(sessionStorage.getItem('cbid'))
 
   try {
-    const response = await (await fetch(`${URL}600/users/${userID}`, {
+    const response = await (await fetch(`${URL}/600/users/${userID}`, {
       headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
       method: 'GET', 
     })).json()
     return await response
 
   } catch (error) {
+    console.log(error);
     return error
   }
 }
@@ -20,7 +21,7 @@ export async function getUserOrder() {
   const token = JSON.parse(sessionStorage.getItem('token'))
   const userID = JSON.parse(sessionStorage.getItem('cbid'))
 
-  const response = await(await fetch(`${URL}660/orders?user.id=${userID}`, {
+  const response = await(await fetch(`${URL}/660/orders?user.id=${userID}`, {
         headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
         method: 'GET', 
       })).json()
@@ -41,7 +42,7 @@ export async function createOrder(formData, list, total) {
     quantity: list.length
   })
 
-  const response = await (await fetch(`${URL}660/orders`, {
+  const response = await (await fetch(`${URL}/660/orders`, {
     headers: { 'Content-Type': 'application/json',  Authorization: `Bearer ${token}`},
     method: 'POST',
     body: order

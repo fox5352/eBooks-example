@@ -4,9 +4,9 @@ import React, { useRef } from 'react'
 import { useNavigate } from "react-router-dom";
 
 export const SearchBar = ({state, toggleBar}) => {
+  const search_bar = document.getElementById('search_bar')
   const redirect = useNavigate()
   const inputRef = useRef('')
-  const search_bar = document.getElementById('search_bar')
 
   if (search_bar) {
     if (state) {
