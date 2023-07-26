@@ -26,7 +26,7 @@ export const Dashboard = () => {
 
   return (
     <>
-      <main>
+      <main className='mb-6'>
         <h2 className='my-6 text-center text-3xl underline underline-offset-4'>My Dashboard</h2>
         {list.length === 0 &&  <DashboardEmpty />}
         {list.length > 0 && list.map(mapper)}

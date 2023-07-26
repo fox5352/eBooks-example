@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export const useFetch = (url) => {
-    const fullURL = `http://localhost:8000/444/${url}`
+    const fullURL = `${process.env.REACT_APP_URL}/444/${url}`
     const [response, setResponse] = useState([])
 
     /* eslint-disable */

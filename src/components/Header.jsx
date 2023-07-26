@@ -46,7 +46,7 @@ export const Header = () => {
                       <i className={`bi bi-${!isDark? "moon-fill": "sun-fill"}`}></i>
                     </button>
                     {/* github btn TOGO: add link */}
-                    <a href='/'>
+                    <a href='/https://github.com/fox5352/eBooks-example'>
                       <button className='header-btn hover:scale-90' >
                         <i className={`bi bi-github`}></i>
                       </button>
