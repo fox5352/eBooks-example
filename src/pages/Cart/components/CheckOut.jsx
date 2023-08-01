@@ -57,7 +57,7 @@ export const CheckOut = ({state, func, ...props}) => {
   } 
 
   return (
-    <div className='scale-0 fixed top-0 left-1/2 my-20 overflow-y-auto -translate-x-1/2 z-20 w-[400px] max-h-[85vh] shadow-lg rounded-lg bg-white text-black dark:bg-zinc-600 dark:text-white transition-all duration-300 ease-in' ref={menuRef}>
+    <div className='scale-0 fixed top-0 left-1/2 my-20 overflow-y-auto -translate-x-1/2 z-20 w-[400px] max-sm:w-[90vw] max-h-[85vh] shadow-lg rounded-lg bg-white text-black dark:bg-zinc-600 dark:text-white transition-all duration-300 ease-in' ref={menuRef}>
         <form className='flex flex-col px-4 py-6'onSubmit={submit}>
             <div className='flex justify-end'>
                 <i className='bi bi-arrow-right' onClick={func}></i>

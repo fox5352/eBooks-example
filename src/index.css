@@ -21,3 +21,9 @@ main {
         @apply place-items-center min-w-[60px] h-full p-1.5 text-lg rounded-lg hover:bg-cherry-500 hover:scale-105 hover:text-xl transition-all duration-300;
     }
 }
+
+@media only screen and (max-width:600px){
+    main {
+        width: 100%;
+    }
+}

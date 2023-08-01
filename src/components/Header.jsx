@@ -24,10 +24,13 @@ export const Header = () => {
 
   return (
     <>
-      <header className='flex flex-row justify-between h-16 px-[120px] text-white bg-gradient-to-r from-rose-500 via-cherry-400 to-[#4B0F19]'>
+      <header className='flex flex-row justify-between h-16 sm:px-[120px] text-white bg-gradient-to-r from-rose-500 via-cherry-400 to-[#4B0F19]'>
           {/* TODO: logo and Name */}
           <div className='h-full'>
-              <Link to='/' className='flex place-items-center h-full px-2 text-3xl font-semibold cursor-pointer'>CodeBooks</Link>
+              <Link to='/' className='flex place-items-center h-full px-2 text-3xl font-semibold cursor-pointer'>
+                <i class="bi bi-house-door"></i>
+                <span className='hidden sm:flex'>CodeBooks</span>
+              </Link>
           </div>
           <div className='flex h-full'>
               {/* settings menu */}
@@ -73,7 +76,7 @@ export const Header = () => {
                   {/* if users authenticated change icon to bi-person-check and nav link */}
                   <i className={`bi bi-person${loggedIn? '-check text-2xl': ' text-xl'}`}></i>
                 </button>
-                {loggedIn ? <LogoutMenu displayMenu={displayMenu} func={toggleMenu} /> :<LoginMenu displayMenu={displayMenu} func={toggleMenu} />}
+                  {loggedIn ? <LogoutMenu displayMenu={displayMenu} func={toggleMenu} /> :<LoginMenu displayMenu={displayMenu} func={toggleMenu} />}
               </div>
           </div>
       </header>

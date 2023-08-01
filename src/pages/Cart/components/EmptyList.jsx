@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const EmptyList = () => {
     return(
       <>
-        <div className='w-[600px] mx-auto p-2 rounded-lg border-2 border-gray-200 dark:border-slate-400 dark:shadow-lg dark:shadow-slate-400' >
+        <div className='w-[40vw] max-sm:w-[85vw] mx-auto p-2 rounded-lg border-2 border-gray-200 dark:border-slate-400 dark:shadow-lg dark:shadow-slate-400' >
           
           <div className='flex justify-center'>
             <i className='bi bi-cart text-6xl text-emerald-400'></i>

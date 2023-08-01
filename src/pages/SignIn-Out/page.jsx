@@ -71,7 +71,7 @@ export const SignPage = () => {
     return(
         <>
             <main> 
-                <form className="w-[500px] p-6 py-4 mx-auto rounded-lg shadow-lg dark:shadow-slate-500" onSubmit={submit}>
+                <form className="w-[30vw] max-sm:w-[80vw] p-6 py-4 mx-auto rounded-lg shadow-lg dark:shadow-slate-500" onSubmit={submit}>
                     <fieldset className="px-4 py-1 pb-4 rounded-lg border-[3px] border-neutral-300 dark:border-slate-500">
                         <legend className="px-1.5 mx-auto text-lg tracking-[3px] first-letter:capitalize">{pathname.replace('/','')}</legend>
                         {/* if register url path then render username field */}

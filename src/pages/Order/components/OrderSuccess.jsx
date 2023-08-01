@@ -12,7 +12,7 @@ export const OrderSuccess = ({order}) => {
 
     return(
       <>
-        <div className='w-[700px] mx-auto px-4 py-6 rounded-lg border-2 border-gray-200 dark:border-slate-400 dark:shadow-lg dark:shadow-slate-400' >
+        <div className='w-[40vw] max-sm:w-[85vw] mx-auto px-4 py-6 rounded-lg border-2 border-gray-200 dark:border-slate-400 dark:shadow-lg dark:shadow-slate-400' >
           
           <div className='flex justify-center mb-8'>
             <i className='bi bi-check-circle text-8xl text-emerald-400'></i>

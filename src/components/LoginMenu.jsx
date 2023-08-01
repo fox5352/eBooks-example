@@ -18,7 +18,7 @@ export const LoginMenu = ({displayMenu, func}) => {
   
 
   return (
-    <div  className='absolute'>
+    <div  className={`absolute right-0 ${displayMenu? '': 'hidden'}`}>
         <div id='menu' ref={menuRef} className='relative flex flex-col ml-1 px-2 py-2 space-y-1 
                         bg-white border2 border-neutral-200 
                         text-black rounded-xl shadow-lg 

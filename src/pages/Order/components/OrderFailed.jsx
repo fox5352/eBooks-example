@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const OrderFailed = () => {
     return(
       <>
-        <div className='w-[600px] mx-auto px-4 py-6 rounded-lg border-2 border-gray-200 dark:border-slate-400 dark:shadow-lg dark:shadow-slate-400' >
+        <div className='w-[40vw] max-sm:w-[85vw] mx-auto px-4 py-6 rounded-lg border-2 border-gray-200 dark:border-slate-400 dark:shadow-lg dark:shadow-slate-400' >
           
           <div className='flex justify-center mb-8'>
             <i className='bi bi-exclamation-circle text-8xl text-red-400'></i>

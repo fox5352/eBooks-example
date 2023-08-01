@@ -5,8 +5,8 @@ export const DashboardCard = ({order, list}) =>{
     const mapper = (props) => {
       return (
         <li key={props.id} className="flex pr-1.5 my-1.5 h-24 rounded-lg shadow-lg dark:shadow-sm dark:shadow-slate-400 ">
-          <img className="h-full pr-2 rounded-l-lg" src="/heroImage.png" alt="product" />
-          <div className="flex flex-col justify-between py-1.5">
+          <img className="h-full max-sm:w-1/2 pr-2 rounded-l-lg" src="/heroImage.png" alt="product" />
+          <div className="flex flex-col justify-between sm:py-1.5 overflow-y-auto">
             <h2 className="text-xl first-letter:capitalize">{props.title}</h2>
             <p className="mb-2 text-lg">R{props.price}</p>
           </div>
