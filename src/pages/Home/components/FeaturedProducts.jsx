@@ -8,7 +8,7 @@ export const FeaturedProducts = () => {
 
   const getList = useCallback(() => {
     getProducts('featuredProducts')
-      .then(res => setTimeout(() => { setResponse(res); }, 6000));
+      .then(res => setResponse(res));
   }, []);
 
   /* eslint-disable */
