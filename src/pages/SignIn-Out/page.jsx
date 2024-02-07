@@ -5,6 +5,7 @@ import { useTitle, signIn } from "../../hooks";
 
 import { InputBlock } from "../../components/InputBlock";
 import { useUser } from "../../stateManagement/user/UserContext";
+import PopUp from "../../components/PopUp"
 
 export const SignPage = () => {
     const { login } = useUser()
@@ -15,6 +16,7 @@ export const SignPage = () => {
         email: '',
         password: ''
     })
+    const [error, setError] = useState(null)
     useTitle(pathname.replace('/', ''))
 
     const submit = async (e) => {
@@ -31,8 +33,7 @@ export const SignPage = () => {
                 login(response.user.id, response.accessToken)
                 redirect('/products')
             }else{
-                // TODO: create own toast popup
-                alert(response)
+                setError(response)
             }
         } catch (error) {
             throw new Error(error)
@@ -59,8 +60,7 @@ export const SignPage = () => {
                 login(response.user.id, response.accessToken)
                 redirect('/products')
             }else{
-                // TODO: create own toast popup
-                alert(response)
+                setError(response)
             }
         } catch (error) {
             throw new Error(error)
@@ -70,7 +70,8 @@ export const SignPage = () => {
 
     return(
         <>
-            <main> 
+            <main>
+                {error && <PopUp message={error} dismiss={true} timeout={2000}/>}
                 <form className="w-[30vw] max-sm:w-[80vw] p-6 py-4 mx-auto rounded-lg shadow-lg dark:shadow-slate-500" onSubmit={submit}>
                     <fieldset className="px-4 py-1 pb-4 rounded-lg border-[3px] border-neutral-300 dark:border-slate-500">
                         <legend className="px-1.5 mx-auto text-lg tracking-[3px] first-letter:capitalize">{pathname.replace('/','')}</legend>
