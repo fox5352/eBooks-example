@@ -3,7 +3,7 @@ import { Header } from '../components/Header';
 import AllRoutes from "../routes/AllRoutes";
 import { FilterProvider, CartProvider, UserProvider } from "../stateManagement";
 
-const AppLayout = () => {
+export default function AppLayout(){
   return (
     <UserProvider>
       <CartProvider>
@@ -17,5 +17,3 @@ const AppLayout = () => {
     </UserProvider>
   )
 }
-
-export default AppLayout
