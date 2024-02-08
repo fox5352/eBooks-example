@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTitle, signIn } from "../../hooks";
 
@@ -49,7 +49,7 @@ export const SignPage = () => {
 
     const loginAsGuest = async (e) => {
         e.preventDefault()
-        const data = {email: process.env.REACT_APP_GUEST_EMAIL, password: process.env.REACT_APP_GUEST_PASSWORD}
+        const data = {email: import.meta.env.VITE_APP_GUEST_EMAIL, password: import.meta.env.VITE_APP_GUEST_PASSWORD}
 
         // post data on appropriate route then get response token else throw error for now TODO:later hook
         try {
