@@ -8,7 +8,6 @@ export const NotFound = () => {
   useTitle("404")
 
   return (
-    // TODO: style later
     <main>
       <div className='w-3/5 px-6 mx-auto rounded-lg text-center'>
         <h2 className='text-xl animate-wave' ><span className='text-amber-500 tracking-widest'>404</span> </h2>

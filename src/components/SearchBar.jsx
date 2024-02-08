@@ -1,5 +1,3 @@
-// TODO: this with animations
-
 import React, { useRef } from 'react'
 import { useNavigate } from "react-router-dom";
 

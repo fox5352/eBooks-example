@@ -1,4 +1,4 @@
-const URL = process.env.REACT_APP_URL
+const URL = import.meta.env.REACT_APP_URL
 
 export async function getUser() {
   const token = JSON.parse(sessionStorage.getItem('token'))
