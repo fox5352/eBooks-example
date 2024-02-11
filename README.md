@@ -2,35 +2,9 @@
 
 This is an e-commerce website example
 
-it uses environment variables to connect to the back-end
-
-```
-    REACT_APP_URL
-```
-## Data 
-
-The data should be returned as an array of objects
-
-the cards uses objects
-```
-    {
-      id: Number,
-      title: String,
-      detail: String,
-      rating: Number,
-      price: Number,
-      best_seller: Boolean,
-      in_stock: Boolean
-    }
-```
-I plan on adding url into the object for the card images
-
-## Login/Register
-
-The Login/Register response expects a id and token and stores it in the user global state and browsers session storage.
-I plan to add toasts for error handing in the Login/Register page
-
-----
+This project i did was made to show my understading of react and state managent, 
+This projects three main technolages are reactjs, react-router and redux
+I've completed the project and since migrated to vite from an deprecated build system
 
 Deployed version on [netlify](http://example.com/ "link to the deployed site")
 
