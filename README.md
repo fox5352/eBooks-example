@@ -1,11 +1,17 @@
-# EBooks Example site 
+# EBooks Example Site
 
-This is an e-commerce website example
+This is an e-commerce website example built using React, React Router, and Redux to demonstrate understanding of state management in React applications.
 
-This project i did was made to show my understading of react and state managent, 
-This projects three main technolages are reactjs, react-router and redux
-I've completed the project and since migrated to vite from an deprecated build system
+**Project Highlights:**
 
-Deployed version on [netlify](http://example.com/ "link to the deployed site")
+* **React:** Utilizes React for building the user interface components.
+* **React Router:** Enables navigation between different pages and handles routing logic.
+* **Redux:** Implements a centralized state management solution for managing application data.
+
+**Build Status:**
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/92cf1095-4ec3-4e82-8b97-59205ce047c5/deploy-status)](https://app.netlify.com/sites/ebooks-example/deploys)
+
+**Important Note:**
+
+Please note that although the deployed version uses a build tool (likely Vite), this project itself uses plain JavaScript for component logic and interaction with React Router and Redux.
